@@ -93,6 +93,7 @@ function getRandomFood() {
 }
 const jokes = ["THE FOOD GODS HAVE SPOKEN. NO ARGUMENTS.", "THIS DECISION IS LEGALLY BINDING (probably).", "YOU'RE WELCOME. NOW GO EAT.", "100% SCIENTIFIC. 0% NEGOTIABLE.", "THE CAT APPROVES. THAT'S FINAL."];
 function decideDinner() {
+  document.querySelector(".decision").classList.remove("is-confirmed");
   currentFood = getRandomFood();
   if (currentFood === null) {
     foodResult.textContent = "NO OPTIONS LEFT 😭";
@@ -147,12 +148,13 @@ excusePanel.querySelectorAll("[data-excuse]").forEach(button => button.addEventL
   }, 950);
 }));
 acceptButton.addEventListener("click", () => {
-  if (!currentFood) return;
+  if (!currentFood || acceptButton.hidden) return;
   const history = readHistory();
   history.unshift({food: currentFood, date: new Date().toISOString()});
   try {localStorage.setItem(HISTORY_KEY, JSON.stringify(history.slice(0,30)));} catch {}
   updateHistory();
   resultMessage.textContent = "💖 DINNER CONFIRMED. THE CAT CAN FINALLY REST.";
+  document.querySelector(".decision").classList.add("is-confirmed");
   againButton.hidden = true;
   acceptButton.hidden = true;
   excusePanel.hidden = true;
