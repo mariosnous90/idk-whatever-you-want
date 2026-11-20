@@ -6,3 +6,33 @@
 .scene-image{background-image:url("scene.png");background-size:100% auto;background-position:center top}
 .hearts{color:#e14d9b;letter-spacing:3px}
 @media(max-width:560px){.scene{aspect-ratio:1.5}.scene-image{background-size:auto 100%;background-position:center top}}
+
+/* Mobile edition: show the complete WIDTH of the illustrated room,
+   but crop BEFORE the illustration's decorative (noninteractive) controls. */
+@media (max-width: 560px) {
+  html,body {max-width:100%;overflow-x:hidden}
+  .app {width:100%;max-width:100%;border-inline:0;box-shadow:none}
+  .scene {height:auto;aspect-ratio:1672/545;overflow:hidden}
+  .scene-image {inset:0;background-image:url('scene.png');background-size:100% auto;background-position:top center;background-repeat:no-repeat}
+  .dashboard {margin-top:0;gap:9px;padding:10px 12px 0}
+  .side-nav {grid-row:1;grid-column:1;max-width:280px;width:100%;border-width:3px;box-shadow:2px 3px #64347c}
+  .side-nav button {height:36px;flex:1}
+  .decision {grid-row:2;grid-column:1;min-height:0;padding:15px 10px 17px;border-width:4px;box-shadow:0 5px #76458f}
+  .decision-label {font-size:clamp(10px,2.8vw,13px);line-height:1.6}
+  .result-card {padding:9px 4px 2px}
+  .result-card p {font-size:11px;margin:5px 0 10px}
+  .decide-btn {padding:13px 18px;font-size:15px;max-width:100%}
+  .decision-actions {flex-wrap:wrap}
+  .decision-actions button {flex:1;min-width:130px}
+  .cat-panel {grid-row:3;grid-column:1;grid-template-columns:48px minmax(0,1fr);gap:3px 9px;min-height:0;padding:9px 12px;text-align:left}
+  .cat-avatar {grid-column:1;grid-row:1/4;font-size:25px;text-align:center}
+  .cat-panel strong,.cat-panel .hearts,.cat-panel .anger-track,.cat-panel small,.cat-panel p {grid-column:2;grid-row:auto;margin:0}
+  .cat-panel strong {font-size:10px}
+  .cat-panel .hearts {font-size:16px;letter-spacing:2px}
+  .cat-panel .anger-track {height:8px}
+  .cat-panel small,.cat-panel p {font-size:10px;min-height:0}
+  .bottom-bar {padding:0 12px 10px;margin-top:13px}
+  .bottom-bar button {min-width:0;flex:1;font-size:11px;padding:10px 5px}
+  .drawer {margin:8px 12px 16px;padding:14px}
+  footer {padding:10px 8px 16px}
+}
